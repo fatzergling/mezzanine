@@ -11,7 +11,7 @@ function Todo({ todo, index, completeTodo, removeTodo, uncompleteToDo}) {
 
         <div>
           <button onClick={() => completeTodo(index)}>Complete</button>
-          <button onClick={() => uncompleteToDo(index)}>UnComplete</button>
+          <button onClick={() => uncompleteToDo(index)}>Incomplete</button>
 
           <button onClick={() => removeTodo(index)}>x</button>
         </div>
@@ -28,6 +28,7 @@ function TodoForm({ addTodo }) {
     addTodo(value);
     setValue("");
   };
+
 
   return (
       <form onSubmit={handleSubmit}>
@@ -80,7 +81,6 @@ function App() {
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
-  console.log(todos)
   return (
       <div className="app">
         <div className="todo-list">
@@ -97,16 +97,15 @@ function App() {
           <TodoForm addTodo={addTodo} />
         </div>
         <div className="incomplete">
-          Uncompleted Tasks: {
+          Incomplete: {
           todos.reduce(function(accumulator, currentValue, currentIndex, array) {
-                return accumulator + (currentValue.isCompleted == false);
+                return accumulator + (currentValue.isCompleted == false || currentValue.isCompleted == null);
               }
               ,0
           )
         }
-        </div>
-        <div className="complete">
-          Completed Tasks: {
+          &nbsp;&nbsp;
+              Complete: {
           todos.reduce(function(accumulator, currentValue, currentIndex, array) {
                 return accumulator + (currentValue.isCompleted == true);
               }
