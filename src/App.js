@@ -11,7 +11,7 @@ function Todo({ todo, index, completeTodo, removeTodo, uncompleteToDo}) {
 
         <div>
           <button onClick={() => completeTodo(index)}>Complete</button>
-          <button onClick={() => uncompleteToDo(index)}>Incomplete</button>
+          <button onClick={() => uncompleteToDo(index)}>Un-Complete</button>
 
           <button onClick={() => removeTodo(index)}>x</button>
         </div>
